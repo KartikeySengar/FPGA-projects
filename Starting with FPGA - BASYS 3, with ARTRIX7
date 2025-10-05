@@ -1,1 +1,19 @@
+// this is the place where I'm specifing the code for the first Project - Turning on a led with the switch in the FPGA dev. board
+//1. starting with the verilog code. 
 
+module(
+input Switch,
+output Led
+); 
+// in verilog we try to assign the behaviour that we want or system to perform.. that in this case we want to assign the input to the output as soon as the sitch is pressed.
+assign Switch=Led;
+endmodule
+
+2. creating the constraints file. ( this file provides the interface between our top level code(verilog code) and the hardware by specifing the top level assignments with the pin that we are using to take input and outpiut..)
+# I am taking pin V17 (on the basys 3 dev. board) as the input (switch), and showing the output on the led V16.
+
+set_property PACKAGE_PIN V17 (get_ports Switch)
+  set_property IOSTANDARD LVCMOS33 (get_ports Led)
+
+
+// this code is assigning the input to the output turning on led.. 
